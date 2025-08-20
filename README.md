@@ -1,2 +1,2 @@
 # Data Warehouse Practice
-Practice building a data warehouse in Postgres, doing ETL processes as well as data modeling. All of this will be imported into a dashboard at the end, either PowerBI or Tableau.
+Practice building a data warehouse in PostgreSQL, doing ETL processes as well as data modeling. All of this will be imported into a dashboard at the end, either PowerBI or Tableau.
