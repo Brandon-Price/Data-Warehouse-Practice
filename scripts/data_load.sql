@@ -6,7 +6,7 @@
 \echo ">> Truncating All Tables"
 TRUNCATE TABLE bronze.crm_cust_info, bronze.crm_prd_info, bronze.crm_sales_details, bronze.erp_cust_az12, bronze.erp_loc_a101, bronze.erp_px_cat_g1v2;
 \timing
-
+\echo "====================================="
 \timing
 \echo "-------------------------------------"
 \echo "Loading CRM Tables"
@@ -17,7 +17,7 @@ TRUNCATE TABLE bronze.crm_cust_info, bronze.crm_prd_info, bronze.crm_sales_detai
 
 \COPY bronze.crm_sales_details FROM 'C:\Users\Brand\Documents\Engineering\Projects\Data Engineering\Data-Warehouse-Practice\datasets\source_crm\sales_details.csv' DELIMITER ',' CSV HEADER; 
 \timing
-
+\echo "====================================="
 \timing
 \echo "-------------------------------------"
 \echo "Loading ERP Tables"
