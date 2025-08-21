@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS DataWarehouse;
+DROP DATABASE IF EXISTS "DataWarehouse";
 
-CREATE DATABASE DataWarehouse;
+CREATE DATABASE "DataWarehouse";
 
 \c DataWarehouse
 CREATE SCHEMA IF NOT EXISTS bronze;
