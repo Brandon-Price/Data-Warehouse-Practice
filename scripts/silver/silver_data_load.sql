@@ -130,7 +130,7 @@ SELECT
 		 WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
 		 ELSE 'n/a'
 	END gen
-FROM bronze.erp_cust_az12
+FROM bronze.erp_cust_az12;
 \timing
 
 \echo '--------------------------------------'
@@ -147,7 +147,7 @@ SELECT
 		 WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'n/a'
 		 ELSE TRIM(cntry)
 	END cntry
-FROM bronze.erp_loc_a101
+FROM bronze.erp_loc_a101;
 \timing
 
 \echo '--------------------------------------'
@@ -162,4 +162,4 @@ SELECT
 	cat,
 	subcat,
 	maintenance
-FROM bronze.erp_px_cat_g1v2
+FROM bronze.erp_px_cat_g1v2;
