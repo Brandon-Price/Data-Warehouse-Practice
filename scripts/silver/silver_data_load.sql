@@ -111,3 +111,55 @@ SELECT
 	END sls_price
 FROM bronze.crm_sales_details;
 \timing
+
+\echo '--------------------------------------'
+\echo 'Inserting into ERP CUST AZ12'
+\echo '--------------------------------------'
+\timing
+TRUNCATE silver.erp_cust_az12;
+INSERT INTO silver.erp_cust_az12 (cid, bdate, gen)
+
+SELECT
+	CASE WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LENGTH(cid))
+		 ELSE cid
+	END cid,
+	CASE WHEN bdate > NOW() THEN NULL
+		 ELSE bdate
+	END bdate,
+	CASE WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
+		 WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
+		 ELSE 'n/a'
+	END gen
+FROM bronze.erp_cust_az12
+\timing
+
+\echo '--------------------------------------'
+\echo 'Inserting into ERP LOC A101'
+\echo '--------------------------------------'
+\timing
+TRUNCATE silver.erp_loc_a101;
+INSERT INTO silver.erp_loc_a101 (cid, cntry)
+
+SELECT
+	REPLACE(cid, '-', '') cid,
+	CASE WHEN UPPER(TRIM(cntry)) = 'DE' THEN 'Germany'
+		 WHEN UPPER(TRIM(cntry)) IN ('US', 'USA') THEN 'United States'
+		 WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'n/a'
+		 ELSE TRIM(cntry)
+	END cntry
+FROM bronze.erp_loc_a101
+\timing
+
+\echo '--------------------------------------'
+\echo 'Inserting into ERP PX CAT G1V2'
+\echo '--------------------------------------'
+\timing
+TRUNCATE silver.erp_px_cat_g1v2;
+INSERT INTO silver.erp_px_cat_g1v2 (id, cat, subcat, maintenance)
+
+SELECT
+	id,
+	cat,
+	subcat,
+	maintenance
+FROM bronze.erp_px_cat_g1v2
